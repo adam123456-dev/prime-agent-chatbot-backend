@@ -16,7 +16,7 @@
         "dest": "/src/open_deep_research/dist/assets/$1"
       },
       {
-        "src": "/(start|feedback)", 
+        "src": "/api/(.*)", 
         "dest": "main.py"
       },
       {

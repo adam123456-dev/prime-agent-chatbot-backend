@@ -367,7 +367,7 @@ graph = builder.compile(
 
 
 
-@app.post("/start")
+@app.post("/api/start")
 async def start_workflow(request: StartRequest):
     # ✅ Initialize full state
     initial_state = {
@@ -418,7 +418,7 @@ async def start_workflow(request: StartRequest):
 
 
 
-@app.post("/feedback")
+@app.post("/api/feedback")
 async def provide_feedback(request: FeedbackRequest):
     # ✅ Convert `workflow_id` from string to `ObjectId`
 
