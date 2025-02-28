@@ -20,7 +20,6 @@ examples/
 
 # Ignore build and distribution folders
 build/
-dist/
 *.egg-info/
 
 # Ignore Python virtual environment
@@ -102,6 +101,5 @@ package-lock.json
 node_modules/
 
 # Ignore language-specific build files
-dist/
 build/
 out/
