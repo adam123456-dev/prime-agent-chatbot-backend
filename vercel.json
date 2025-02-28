@@ -22,10 +22,6 @@
       {
         "src": "/(.*)",        
         "dest": "/src/open_deep_research/dist/index.html"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/src/open_deep_research/dist/$1"
       }
     ]
   }
