@@ -444,4 +444,4 @@ async def provide_feedback(request: FeedbackRequest):
 
     return {"status": "workflow_resumed", "result": updated_state}
 
-
+app.mount("/", StaticFiles(directory="src/open_deep_research/dist", html=True), name="static")
