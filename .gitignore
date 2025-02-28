@@ -1,0 +1,107 @@
+# Ignore Python compiled files
+__pycache__/
+
+# Ignore Python package directories
+open_deep_research/
+open_deep_research.egg-info/
+
+# Ignore examples folder
+examples/
+
+# Ignore LangGraph API folder
+.langgraph_api/
+
+# Ignore environment variables file
+.env
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+
+# Ignore build and distribution folders
+build/
+dist/
+*.egg-info/
+
+# Ignore Python virtual environment
+venv/
+env/
+
+# Ignore log files
+*.log
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore mypy cache
+.mypy_cache/
+
+# Ignore coverage files
+.coverage
+htmlcov/
+
+# Ignore language-specific files
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.dll
+*.dylib
+
+# Ignore language server files
+.python-version
+
+# Ignore language-specific cache
+.cache/
+
+# Ignore language-specific lock files
+Pipfile.lock
+poetry.lock
+
+# Ignore language-specific virtual environments
+*.venv/
+
+# Ignore language-specific build artifacts
+*.egg
+*.whl
+
+# Ignore language-specific test artifacts
+.pytest_cache/
+test-results/
+
+# Ignore language-specific coverage files
+.coverage
+htmlcov/
+
+# Ignore language-specific profiling files
+profile/
+
+# Ignore language-specific debug files
+*.prof
+*.profraw
+
+# Ignore language-specific documentation files
+docs/_build/
+
+# Ignore language-specific configuration files
+*.ini
+*.cfg
+*.conf
+
+# Ignore language-specific lock files
+yarn.lock
+package-lock.json
+
+# Ignore language-specific cache files
+node_modules/
+
+# Ignore language-specific build files
+dist/
+build/
+out/
