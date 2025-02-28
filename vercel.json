@@ -20,6 +20,10 @@
         "dest": "main.py"
       },
       {
+        "src": "/favicon.png",
+        "dest": "/src/open_deep_research/dist/favicon.png"
+      },
+      {
         "src": "/(.*)",        
         "dest": "/src/open_deep_research/dist/index.html"
       }
