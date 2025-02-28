@@ -2,14 +2,26 @@
     "version": 2,
     "builds": [
       {
-        "src": "main.py", 
-        "use": "@vercel/python"      
+        "src": "main.py",       
+        "use": "@vercel/python" 
+      },
+      {
+        "src": "src/open_deep_research/dist/**", 
+        "use": "@vercel/static" 
       }
     ],
     "routes": [
       {
-        "src": "/(.*)",         
+        "src": "/static/(.*)",  
+        "dest": "/src/open_deep_research/dist/$1"
+      },
+      {
+        "src": "/(start|feedback)", 
         "dest": "main.py"
+      },
+      {
+        "src": "/(.*)",        
+        "dest": "/src/open_deep_research/dist/index.html"
       }
     ]
   }
