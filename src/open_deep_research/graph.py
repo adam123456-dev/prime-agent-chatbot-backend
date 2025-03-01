@@ -21,8 +21,8 @@ from .configuration import Configuration
 from .utils import tavily_search_async, deduplicate_and_format_sources, format_sections, perplexity_search
 import logging
 from langgraph.checkpoint.memory import MemorySaver
-
-
+import os
+import mimetypes
 app = FastAPI()
 
 
@@ -31,11 +31,6 @@ app = FastAPI()
 async def hello():
     return {"message": "Hello from FastAPI!"}
 
-
-# Serve the React app for all other routes
-@app.get("/{full_path:path}")
-async def serve_react_app(full_path: str):
-    return FileResponse("./src/open_deep_research/dist/index.html")
 
 
 
@@ -367,7 +362,7 @@ graph = builder.compile(
 
 
 
-@app.post("/start")
+@app.post("/api/start")
 async def start_workflow(request: StartRequest):
     # ✅ Initialize full state
     initial_state = {
@@ -418,7 +413,7 @@ async def start_workflow(request: StartRequest):
 
 
 
-@app.post("/feedback")
+@app.post("/api/feedback")
 async def provide_feedback(request: FeedbackRequest):
     # ✅ Convert `workflow_id` from string to `ObjectId`
 
@@ -444,4 +439,22 @@ async def provide_feedback(request: FeedbackRequest):
 
     return {"status": "workflow_resumed", "result": updated_state}
 
+
+@app.get("/{full_path:path}")
+async def serve_static_or_index(full_path: str):
+    file_path = os.path.join("./src/open_deep_research/dist", full_path)
+    
+    logging.debug(f"Requested path: {full_path}")
+    logging.debug(f"Serving file: {file_path}")
+
+    if os.path.exists(file_path) and not os.path.isdir(file_path):
+        mime_type, _ = mimetypes.guess_type(file_path)
+        logging.debug(f"Detected MIME type: {mime_type}")
+        return FileResponse(file_path, media_type=mime_type)
+
+    logging.debug("Serving index.html (SPA fallback)")
+    return FileResponse("./src/open_deep_research/dist/index.html")
+
+# Serve the entire frontend build folder
+app.mount("/", StaticFiles(directory="src/open_deep_research/dist", html=True), name="static")
 

@@ -2,7 +2,6 @@
 
 def get_report_planner_query_writer_instructions(report_type: str) -> str:
     # Prompt to generate search queries to help with planning the report
-    print(f"-------------------{report_type}")
     prompt = {
         "marketing" : """You are a top-tier marketing strategist and research analyst helping to plan a marketing report.
 
