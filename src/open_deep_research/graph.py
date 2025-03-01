@@ -405,14 +405,6 @@ async def start_workflow(request: StartRequest):
             "result": updated_state
         }
 
-    
-
-    
-
-
-
-
-
 @app.post("/api/feedback")
 async def provide_feedback(request: FeedbackRequest):
     # ✅ Convert `workflow_id` from string to `ObjectId`
@@ -444,15 +436,11 @@ async def provide_feedback(request: FeedbackRequest):
 async def serve_static_or_index(full_path: str):
     file_path = os.path.join("./src/open_deep_research/dist", full_path)
     
-    logging.debug(f"Requested path: {full_path}")
-    logging.debug(f"Serving file: {file_path}")
 
     if os.path.exists(file_path) and not os.path.isdir(file_path):
         mime_type, _ = mimetypes.guess_type(file_path)
-        logging.debug(f"Detected MIME type: {mime_type}")
         return FileResponse(file_path, media_type=mime_type)
 
-    logging.debug("Serving index.html (SPA fallback)")
     return FileResponse("./src/open_deep_research/dist/index.html")
 
 # Serve the entire frontend build folder
